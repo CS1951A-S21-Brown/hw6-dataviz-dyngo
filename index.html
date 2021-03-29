@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="utf-8">
-        <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
-        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="main.css"/>
-        <!--Feel free to add more CSS files as needed-->
-        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
-    </head>
+    <meta charset="utf-8">
+    <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css" />
+    <!--Feel free to add more CSS files as needed-->
+
+    <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-array.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+</head>
+
 <body>
     <div class="header">
         <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
@@ -16,13 +23,85 @@
     <div class="row">
         <div class="col-lg-6">
             <div id="graph1"></div>
-            <div id="graph2"></div><br/>
+
+            <div id="graph2"></div><br />
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn btn-info" onclick="setData('NA_Sales')">North America</button>
+                    <button type="button" class="btn btn-info" onclick="setData('EU_Sales')">Europe Sales</button>
+                    <button type="button" class="btn btn-info" onclick="setData('JP_Sales')">Japan Sales</button>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
-            <div id="graph3"></div>
+            <div id="graph3">
+
+                <input type="text" id="attrInput" class="form-control form-control-inline" placeholder="Genre"
+                    aria-label="Artist" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button style="border-top-left-radius: 0; border-bottom-left-radius: 0;" class="btn btn-primary"
+                        type="button" onclick="setGenre()">
+                        Submit
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+        <h3>Written Questions:</h3>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col text-align-left">
+                    <ul>
+                        1. Graph 1 (top left on full screen) shows the top 10 ranking videogames, and their corresponding Global 
+                        Sales. It aims to display the top 10 videogames of all time, and I believe that the ranking (accumulation 
+                        of all sales) is a good indication of how well the game did overall. Graph 2 was interactive with three different buttons,
+                        that corresponding to the three different regions. When toggled, the bar plot would display the
+                        top 8 genres that performed well in the given region. For example, Action
+                        was the most successful in terms of NA_Sales in North America. Graph 3 was made with an input
+                        text field. It aimed to find the best publisher for a given videogame genre.
+                        This genre could be entered in a text field and submited via the button. The publishers were
+                        summed over the Global_Sales for each of the videogames that they published in
+                        that given genre.
+                    </ul>
+                    <ul>
+                        2. D3 was helpful in data binding to DOM elements in order to scale them correctly, and providing library methods to process data efficiently,
+                        and offering neat accessories such as tooltips. 
+                    </ul>
+                    <ul>
+                        3. However, there are a few reasons why I do not think it was the best tool. I do think that the documentaion was a bit scuffled due to different 
+                        versions having quite a few modifications. Another issue that I ran into a lot was that the visualization methods (scaling, offsetting) were a bit
+                        tedious and were not as smooth as other frameworks such as react. Lastly, I did find that a lot of the support community online (stackoverflow, etc.)
+                        was not as helpful as other communities I have came across in other classes/work experience.
+                    </ul>
+                    <ul>
+                        4. Although the dashboard fits on my screen, I do believe that users who have a smaller screen or are using a phone/tablet will have a harder time
+                        using/interpreting it. Due to my inexperience of javascript and bootstrap/css, I was not able to fit everything in flex boxes so that the page would be
+                        entirely responsive. I also realized from the second reading that in order to improve the visibility and accessibility of the dashboard, I should lean towards more colorblind
+                        friendly shades so that the data bars do not blend  with each other. Also adding legends or arrows may be helpful to indicate more closesly where data is pointing to.
+                    </ul>
+                    <ul>
+                        5. I was very stuck on the data processing stage, which really inhibited my ability to spend time on the accessibility to all audiences. I think that if I were to spend more time
+                        on this project, I would aim to create a more variety of graphs with helpful tooltips that describe the data in more detail. However, my limited knowledge of javascript and html/css 
+                        is an obstacle that I hope to overcome soon, because developing eye friendly data visualization tools is imperative to presenting work and statistics. I also would spend more time with
+                        the colors and flex sizes of the graphs so that they could be responsive to users who have different devices and can change with the screen size.
+                    </ul>
+                        
+                </div>
+                        
+            </div>
         </div>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript">
+        // Define margins for SVG
+        const margin = { top: 40, right: 100, bottom: 40, left: 200 };
+        // TODO: Define the number of examples to display on the graph
+        const NUM_EXAMPLES = 10;
+    </script>
+    <script type="text/javascript" src="bar.js"></script>
+    <script type="text/javascript" src="question_two.js"></script>
+    <script type="text/javascript" src="search.js"></script>
 </body>
+
 </html>

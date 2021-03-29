@@ -9,4 +9,35 @@
     text-align: center;
 }
 
-/* Include any custom CSS styling here! */
+.form-control-inline {
+    min-width: 20;
+    width: 200;
+    display: inline;
+}
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+  
+  div.tooltip {
+    color: white;
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgba(0,0,0,.8);
+    border: 2px solid black;
+    pointer-events: none;
+  }
+
