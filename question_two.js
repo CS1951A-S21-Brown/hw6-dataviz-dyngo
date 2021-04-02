@@ -97,16 +97,13 @@ function setData(region) {
 }
 
 function second_cleanData(data, numExamples, region) {
-
     let nestedData = d3.nest()
         .key(function (d) { return d.Genre })
         .rollup(function (leaves) {
             return d3.sum(leaves, function (d) { return (d[region]) })
         })
         .entries(data)
-
     nestedData = nestedData.sort(function (a, b) { return -a.value - -b.value })
     return nestedData.slice(0, 8)
-
 }
 setData("NA_Sales")
